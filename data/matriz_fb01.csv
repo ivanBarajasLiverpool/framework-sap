@@ -1,0 +1,23 @@
+Paso,Transaccion,Pantalla,Accion,Control_o_Ruta,Insumo,Validacion_Esperada
+1,FB01,SAP Easy Access,TRANSACCION,okcd,FB01,Abre pantalla Contabilizar documento: Datos cabecera
+2,FB01,Datos cabecera,INPUT,wnd[0]/usr/ctxtBKPF-BLDAT,14.10.2026,Fecha de documento ingresada
+3,FB01,Datos cabecera,INPUT,wnd[0]/usr/ctxtBKPF-BLART,SA,Clase de documento SA
+4,FB01,Datos cabecera,INPUT,wnd[0]/usr/ctxtBKPF-BUKRS,110,Sociedad 110
+5,FB01,Datos cabecera,INPUT,wnd[0]/usr/ctxtBKPF-BUDAT,14.10.2026,Fecha contable ingresada
+6,FB01,Datos cabecera,INPUT,wnd[0]/usr/ctxtBKPF-WAERS,MXP,Moneda MXP
+7,FB01,Datos cabecera - Pos 1,INPUT,wnd[0]/usr/ctxtRF05A-NEWBS,40,Clave contabilizacion 40
+8,FB01,Datos cabecera - Pos 1,INPUT,wnd[0]/usr/ctxtRF05A-NEWKO,51000271,Cuenta mayor 51000271
+9,FB01,Datos cabecera,ENTER,wnd[0],,Avanza a Posicion 1 Contab.Debe 40
+10,FB01,Posicion 1 Debe 40,INPUT,wnd[0]/usr/txtBSEG-WRBTR,100,Importe 100
+11,FB01,Posicion 1 Debe 40,INPUT,wnd[0]/usr/ctxtBSEG-MWSKZ,E0,Indicador impuestos E0
+12,FB01,Posicion 1 Debe 40,INPUT_MULTI_ID,wnd[0]/usr/subBLOCK:SAPLKACB:1006/ctxtCOBL-KOSTL|wnd[0]/usr/subBLOCK:SAPLKACB:1002/ctxtCOBL-KOSTL|wnd[0]/usr/ctxtCOBL-KOSTL,2100004004,Centro de costo 2100004004 completo
+13,FB01,Posicion 1 - Sig Pos,INPUT,wnd[0]/usr/ctxtRF05A-NEWBS,50,Clave contabilizacion 50
+14,FB01,Posicion 1 - Sig Pos,INPUT,wnd[0]/usr/ctxtRF05A-NEWKO,22570009,Cuenta mayor 22570009
+15,FB01,Posicion 1 Debe 40,ENTER,wnd[0],,Avanza a Posicion 2 Contab.Haber 50
+16,FB01,Posicion 2 Haber 50,INPUT,wnd[0]/usr/txtBSEG-WRBTR,100,Importe 100
+17,FB01,Posicion 2 Haber 50,CLICK,wnd[0]/tbar[1]/btn[14],,Muestra Visualizar Resumen con saldo 0.00
+18,FB01,Visualizar Resumen,SAVE,wnd[0]/tbar[0]/btn[11],,Contabiliza el documento
+19,FB01,Barra de Estado,BUFFER_STATUSBAR,wnd[0]/sbar,NumDocContable,was posted in company code 110
+20,FB03,Menu Documento,MENU,Documento->Visualizar,,Abre Resumen de documentos: Visualizar
+21,FB03,Menu Entorno,MENU,Entorno->Entorno de documento->Documentos financieros,,Abre pop-up Lista de documentos en Finanzas
+22,FB03,Lista Docs Finanzas,CAPTURAR_POPUP_FINANZAS,wnd[1],,Captura los 4 documentos financieros y cierra pop-up

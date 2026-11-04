@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+.venv/
+venv/
+env/
+
+# Variables sensibles: NUNCA versionar
+.env
+
+reports/
+logs/
+*.log
+
+.vscode/
+.idea/
+.pytest_cache/

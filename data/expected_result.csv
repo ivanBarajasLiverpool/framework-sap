@@ -1,0 +1,2 @@
+test_id,resultado_esperado
+FB01_001,"El documento se contabiliza en la sociedad 110 (mensaje 'Doc.XXXXXXXXX se contabilizó en sociedad 110') y en FB03 se muestran los documentos en Finanzas: Documento contable, Doc.ctro.beneficios, Documento CO y Consolidación."

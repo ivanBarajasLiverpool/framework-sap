@@ -1,0 +1,9 @@
+pywin32>=306
+robotframework-sapguilibrary>=1.1
+pytest>=8.0.0
+pytest-html==4.1.1
+pandas>=2.2.0
+openpyxl>=3.1.2
+pillow>=10.2.0
+python-dotenv>=1.0.1
+requests>=2.31.0
