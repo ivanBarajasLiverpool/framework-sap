@@ -43,7 +43,7 @@ Immediately after generating or modifying any test case or module file and verif
    ```
 3. **Commit with Conventional Commit message**:
    ```bash
-   git commit -m "feat(pao): implementar TC_032 para validacion de editar cliente y acciones"
+   git commit -m "feat(SAP): implementar TC_032 para validacion de editar cliente y acciones"
    ```
 4. **Push to remote branch (if required)**:
    ```bash
