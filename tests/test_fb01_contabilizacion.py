@@ -4,6 +4,7 @@ Estructurado bajo el patrón Page Object Model (POM) sobre `robotframework-sapgu
 """
 
 import pytest
+from config.settings import Config
 from pages.modules.fb01_page import FB01Page
 from pages.modules.fb03_page import FB03Page
 
@@ -28,16 +29,16 @@ def test_FB01_001_contabilizacion_y_visualizacion(sap):
         fecha_contab="14.10.2026",
         moneda="MXP",
         clv_ct_1="40",
-        cuenta_1="51000271",
+        cuenta_1=Config.FB01_CUENTA_1,
     )
 
     # 2. Acciones Principales - Posiciones Contables (Debe y Haber)
     fb01.ingresar_posicion_debe(
         importe="100",
         ind_impuestos="E0",
-        centro_costo="2100004004",
+        centro_costo=Config.FB01_CENTRO_COSTO,
         sig_clv_ct="50",
-        sig_cuenta="22570009",
+        sig_cuenta=Config.FB01_SIG_CUENTA,
     )
     fb01.ingresar_posicion_haber_y_resumen(
         importe="100",

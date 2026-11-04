@@ -44,6 +44,11 @@ class Config:
     GOOGLE_CHAT_WEBHOOK = os.getenv("AUTO_ACC")              # Mismo nombre de variable que el framework PAO
     GOOGLE_CHAT_SUBTITLE = os.getenv("GOOGLE_CHAT_SUBTITLE", "SAP Migración ECC to S4H")
 
+    # ── Datos de prueba (FB01) ────────────────────────────────────
+    FB01_CUENTA_1 = os.getenv("FB01_CUENTA_1", "51000271")
+    FB01_CENTRO_COSTO = os.getenv("FB01_CENTRO_COSTO", "2100004004")
+    FB01_SIG_CUENTA = os.getenv("FB01_SIG_CUENTA", "22570009")
+
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     REPORTS_DIR = os.path.join(BASE_DIR, "reports")
     REPORT_PATH = os.path.join(REPORTS_DIR, "report.html")
