@@ -13,16 +13,16 @@ Esta skill define las reglas obligatorias de arquitectura y el flujo de trabajo 
 
 1. **Prohibido usar una carpeta `modules/` o funciones sueltas de página**: Toda la lógica de interacción con pantallas de SAP vive **exclusivamente en `pages/`** bajo el patrón **Page Object Model (POM)**.
 2. **Motor basado en `robotframework-sapguilibrary`**:
-   - [`core/sap_engine.py`](../../core/sap_engine.py) (`SAPEngine` / `SAPDriver`) envuelve `SapGuiLibrary` junto con la captura de evidencias en Base64, resaltado de campos (`Visualize`), lectura de barra de estado y buffers (`sap.buffers`).
-   - Ningún test ni Page Object debe instanciar `win32com.client` directamente ni llamar a `session.findById()` fuera de [`BasePage`](../../pages/base_page.py) o [`SAPEngine`](../../core/sap_engine.py).
+   - [`core/sap_engine.py`](../../../core/sap_engine.py) (`SAPEngine` / `SAPDriver`) envuelve `SapGuiLibrary` junto con la captura de evidencias en Base64, resaltado de campos (`Visualize`), lectura de barra de estado y buffers (`sap.buffers`).
+   - Ningún test ni Page Object debe instanciar `win32com.client` directamente ni llamar a `session.findById()` fuera de [`BasePage`](../../../pages/modules/base_page.py) o [`SAPEngine`](../../../core/sap_engine.py).
 3. **Separación en 4 niveles para cada transacción SAP**:
    - **Nivel 1 — Localizadores (`pages/locators/<tcode>_locators.py`)**: Solo constantes `str` o listas de IDs técnicos de SAP GUI (`wnd[0]/usr/...`) y rutas de menú. Prohibido incluir lógica aquí.
    - **Nivel 2 — Clase Base (`pages/modules/base_page.py`)**: Contiene los verbos genéricos reutilizables que delegan en `SapGuiLibrary` y registran evidencias automáticamente.
    - **Nivel 3 — Page Object de Transacción (`pages/modules/<tcode>_page.py`)**: Hereda de `BasePage`, importa sus localizadores desde `pages/locators/` y expone métodos de negocio claros y encadenables (`return self`).
    - **Nivel 4 — Caso de Prueba (`tests/test_<tcode>_<flujo>.py`)**: Solo instancia las clases Page Object (o recibe sus fixtures de `conftest.py`), invoca métodos de negocio y ejecuta `assert`.
 4. **Respeto absoluto al flujo de Evidencias, Reportes y Nexus**:
-   - No modificar ni deshabilitar los hooks de [`conftest.py`](../../conftest.py) (`pytest_runtest_makereport`, `pytest_html_results_summary`, `pytest_unconfigure`).
-   - Todo nuevo caso de prueba debe registrarse en [`data/expected_result.csv`](../../data/expected_result.csv) para que aparezca en la cortinilla de video (`show_intro`) y en el recuadro de Resultado Esperado del reporte HTML Liverpool enviado a **Nexus**.
+   - No modificar ni deshabilitar los hooks de [`conftest.py`](../../../conftest.py) (`pytest_runtest_makereport`, `pytest_html_results_summary`, `pytest_unconfigure`).
+   - Todo nuevo caso de prueba debe registrarse en [`data/expected_result.csv`](../../../data/expected_result.csv) para que aparezca en la cortinilla de video (`show_intro`) y en el recuadro de Resultado Esperado del reporte HTML Liverpool enviado a **Nexus**.
 
 ---
 
